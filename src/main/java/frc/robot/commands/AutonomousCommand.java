@@ -6,10 +6,10 @@ import frc.robot.subsystems.TracaoSubsystem;
 
 public class AutonomousCommand extends CommandBase {
     TracaoSubsystem tracaoSubsystem;
-   
+    double speed;
     
-    public AutonomousCommand(TracaoSubsystem tracaoSubsystem){
-       
+    public AutonomousCommand(TracaoSubsystem tracaoSubsystem, double speed){
+        this.speed = speed;
         this.tracaoSubsystem = tracaoSubsystem;
         addRequirements(tracaoSubsystem);
     }   
@@ -20,7 +20,7 @@ public class AutonomousCommand extends CommandBase {
     @Override
     public void execute() {
 
-        tracaoSubsystem.controllerGroup.arcadeDrive(0.0, 0.6);
+        tracaoSubsystem.controllerGroup.arcadeDrive(0.0, speed);
     }
 
     @Override

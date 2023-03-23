@@ -20,4 +20,7 @@ public final class Constants {
   public class ArmConstants {
     public static final double armSpeed = 1;
   }
+  public class AutonomousContants {
+    public static final double autonomousSpeed = 0.6;
+  }
 }
