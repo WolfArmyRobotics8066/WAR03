@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj2.command.*;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.ElevatorConstants;
 import frc.robot.commands.*;
+import frc.robot.commands.autonomous.LeaveCommunity;
+import frc.robot.commands.autonomous.LowAndLeave;
 import frc.robot.subsystems.*;
 
 @SuppressWarnings("unused")
@@ -20,14 +22,15 @@ public class RobotContainer {
   SendableChooser<Command> aChooser;
   JoystickSubsystem joystickSubsystem = new JoystickSubsystem();
   ElevatorSubsystem elevatorSubsystem = new ElevatorSubsystem();
-  public TracaoSubsystem tracaoSubsystem = new TracaoSubsystem();
+  TracaoSubsystem tracaoSubsystem = new TracaoSubsystem();
   ArmSubsystem armSubsystem = new ArmSubsystem();
   ClawSubsystem clawSubsystem = new ClawSubsystem();
 
   public RobotContainer() {
     aChooser = new SendableChooser<Command>();
     aChooser.setDefaultOption("null", null);
-    aChooser.addOption("AutoOne", new AutoOne());
+    aChooser.addOption("LeaveCommunity", new LeaveCommunity(tracaoSubsystem));
+    aChooser.addOption("LowAndLeave", new LowAndLeave(tracaoSubsystem));
     SmartDashboard.putData("Autonomous", aChooser);
     CameraServer.startAutomaticCapture();
     CvSink cvSink = CameraServer.getVideo();
